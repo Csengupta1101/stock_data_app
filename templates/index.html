@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Data App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Data App</h1>
+        <form id="stockForm">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" required>
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" required>
+            <label for="companyName">Company Name:</label>
+            <select id="companyName" required>
+                <option value="" disabled selected>Select a company</option>
+                {% for company in companies %}
+                    <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+            </select>
+            <label for="outputFolder">Output Folder:</label>
+            <input type="text" id="outputFolder" required>
+            <button type="submit">Fetch Stock Data</button>
+        </form>
+        <p id="statusMessage"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
